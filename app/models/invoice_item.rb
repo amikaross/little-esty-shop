@@ -3,6 +3,7 @@ class InvoiceItem < ApplicationRecord
   belongs_to :item
   belongs_to :bulk_discount, optional: true 
   enum status: ["packaged", "pending", "shipped"]
+  after_find :add_discount
   after_create :add_discount
 
   def item_name
@@ -14,7 +15,7 @@ class InvoiceItem < ApplicationRecord
   end
 
   def find_discount
-    item.merchant.bulk_discounts.where("#{quantity} >= bulk_discounts.threshold").order(threshold: :desc).first
+    item.merchant.bulk_discounts.where("#{quantity} >= bulk_discounts.threshold").order(discount: :desc).first
   end
 
   def add_discount 
