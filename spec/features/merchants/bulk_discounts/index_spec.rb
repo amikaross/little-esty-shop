@@ -78,5 +78,22 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       expect(page).to_not have_content("Quantity Threshold: 15 items")
       expect(page).to_not have_content("Percentage Discount: 30%")
     end
+
+    it "can delete a bulk discount even if it's already been 'applied' to an invoice_item" do 
+      cumin = @merchant.items.create!(name: "Cumin", description: "Some Cumin", unit_price: 1)
+      customer = Customer.create!(first_name: "Lee", last_name: "Saville")
+      invoice = customer.invoices.create!(status: 1)
+      InvoiceItem.create!(invoice: invoice, item: cumin, unit_price: 1, quantity: 30)
+      
+      visit merchant_bulk_discounts_path(@merchant)
+
+      within "#bulk-discount-#{@discount_3.id}" do
+        click_button("Delete Discount")
+      end
+
+      expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
+      expect(page).to_not have_content("Quantity Threshold: 15 items")
+      expect(page).to_not have_content("Percentage Discount: 30%")
+    end
   end
 end

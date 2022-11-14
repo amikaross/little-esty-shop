@@ -26,6 +26,9 @@ class BulkDiscountsController < ApplicationController
   def destroy 
     merchant = Merchant.find(params[:merchant_id])
     discount = BulkDiscount.find(params[:id])
+    invoice_items = InvoiceItem.where(bulk_discount: discount)
+
+    invoice_items.update_all(bulk_discount_id: nil) unless invoice_items.empty?
     discount.destroy
 
     redirect_to merchant_bulk_discounts_path(merchant)
