@@ -32,8 +32,8 @@ tr:nth-child(even) {
   <% end %>
 
   <h4>Created on: <%= @invoice.created_at.strftime("%A, %B %d, %Y") %></h4>
-  <h4><b>Total Revenue:</b> $<%= @invoice.admin_total_revenue %></h4>
-  <h4><b>Total Discounted Revenue:</b> $<%= @invoice.admin_discounted_revenue %></h4>
+  <h4><%= "Total Revenue: $#{sprintf('%.2f', @invoice.admin_total_revenue)}" %></h4>
+  <h4><%= "Total Discounted Revenue: $#{sprintf('%.2f', @invoice.admin_discounted_revenue)}" %></h4>
 
   <h4>Customer:</h4>
   <p style="padding-left:4em"><%= "#{@customer.first_name} #{@customer.last_name}" %></p>
@@ -51,7 +51,7 @@ tr:nth-child(even) {
         <tr>
           <td><%= i.item.name %></td>
           <td><%= i.quantity %></td>
-          <td><%= i.unit_price %></td>
+          <td><%= "$" + sprintf('%.2f', i.item.unit_price) %> %></td>
           <td><%= i.status %></td>
         </tr>
       <% end %>
