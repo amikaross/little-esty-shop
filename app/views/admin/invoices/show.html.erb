@@ -47,12 +47,12 @@ tr:nth-child(even) {
         <th>Unit Price</th>
         <th>Status</th>
       </tr>
-      <% @invoice.items.each do |item| %>
+      <% @invoice.invoice_items.each do |i| %>
         <tr>
-          <td><%= item.name %></td>
-          <td><%= item.invoice_items.sum(:quantity) %></td>
-          <td><%= item.unit_price %></td>
-          <td><%= item.invoice_items.first.status %></td>
+          <td><%= i.item.name %></td>
+          <td><%= i.quantity %></td>
+          <td><%= i.unit_price %></td>
+          <td><%= i.status %></td>
         </tr>
       <% end %>
     </table>
