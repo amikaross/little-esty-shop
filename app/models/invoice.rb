@@ -29,7 +29,6 @@ class Invoice < ApplicationRecord
   end
 
   def discounted_revenue(merchant)
-    invoice_items.all
     invoice_items.joins(:item)
                  .left_outer_joins(:bulk_discount)
                  .where("items.merchant_id = #{merchant.id}")
