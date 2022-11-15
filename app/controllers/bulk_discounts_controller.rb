@@ -1,5 +1,6 @@
 class BulkDiscountsController < ApplicationController 
   before_action :get_holidays, only: [:index]
+  after_action :update_item_discounts, only: [:create, :destroy, :edit]
   
   def index 
     @merchant = Merchant.find(params[:merchant_id])
@@ -64,5 +65,11 @@ class BulkDiscountsController < ApplicationController
 
   def get_holidays
     @holidays = HolidaySearch.new.holidays
+  end
+
+  def update_item_discounts 
+    merchant = Merchant.find(params[:merchant_id])
+    invoice_items = InvoiceItem.joins(:item).where(items: {merchant_id: merchant.id})
+    invoice_items.each { |item| item.add_discount }
   end
 end
