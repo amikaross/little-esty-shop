@@ -10,6 +10,7 @@ RSpec.describe BulkDiscount, type: :model do
     it { should validate_numericality_of(:threshold).is_greater_than(0).only_integer }
     it { should validate_presence_of :discount }
     it { should validate_presence_of :threshold }
+    it { should validate_presence_of :name }
   end
 
   describe "instance methods" do 

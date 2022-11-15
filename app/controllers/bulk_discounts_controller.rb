@@ -55,7 +55,7 @@ class BulkDiscountsController < ApplicationController
 
   private
   def app_params
-    params.permit(:merchant_id, :discount, :threshold)
+    params.permit(:merchant_id, :discount, :threshold, :name)
   end
 
   def get_holidays
