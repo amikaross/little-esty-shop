@@ -4,6 +4,7 @@ class InvoiceItem < ApplicationRecord
   belongs_to :bulk_discount, optional: true 
   enum status: ["packaged", "pending", "shipped"]
   after_create :add_discount
+  after_find :add_discount
 
   def item_name
     Item.find(self.item_id).name
