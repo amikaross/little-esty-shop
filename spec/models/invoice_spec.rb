@@ -52,15 +52,15 @@ RSpec.describe Invoice, type: :model do
     @customer_6_invoice_1.transactions.create!(credit_card_number: 123456789, credit_card_expiration_date: "07/2023", result: "success")
 
     @merchant = Merchant.create!(name: "Savory Spice")
-    @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5)
-    @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 7 )
+    @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5, name: "Discount 1")
+    @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 7, name: "Discount 2")
     @cumin = @merchant.items.create!(name: "Cumin", description: "2 oz of ground cumin in a glass jar.", unit_price: 10)
     @thyme = @merchant.items.create!(name: "Thyme", description: "2 oz of dried thyme in a glass jar.", unit_price: 10)
     @paprika = @merchant.items.create!(name: "Paprika", description: "2 oz of dried paprika in a glass jar.", unit_price: 10)
 
     @other_merchant = Merchant.create!(name: "Other Merchant")
     @other_item = @other_merchant.items.create!(name: "Other Item", description: "some stuff", unit_price: 15)
-    @other_merchant_discount = @other_merchant.bulk_discounts.create!(discount: 20, threshold: 5)
+    @other_merchant_discount = @other_merchant.bulk_discounts.create!(discount: 20, threshold: 5, name: "Other Merchant Discount")
 
     @customer = Customer.create!(first_name: "Amanda", last_name: "Ross")
     @invoice = @customer.invoices.create!(status: 1)
