@@ -1,4 +1,4 @@
-<a name="Little-Esty-Shop"></a>
+<a name="Little-Esty-Shop + Bulk Discounts"></a>
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -24,13 +24,15 @@
     <img src="doc/little-esty-shop.jpg" alt="Logo" width="400" height="200">
   </a>
 
-<h1 align="center">Little Esty Shop</h1>
+<h1 align="center">Little Esty Shop + Bulk Discounts</h1>
 </div>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 "Little Esty Shop" is a group project that builds a fictitious e-commerce platform where merchants and admins can manage inventory and fulfill customer invoices. Learning goals included practice designing a normalized database schema and defining model relationships, utilizing advanced routing techniques, utilizing advanced Active Record techniques to perform complex database queries, and practice consuming a public API while utilizing POROs as a way to apply OOP principles to organize code.
+
+"Bulk Discounts" is a solo extension of the group "Little Esty Shop" project. It adds functionality for merchants to create bulk discounts for their items. A bulk discount is a discount based on the quantity of items the customer is buying. 
 
 ### Built With
 
@@ -40,7 +42,8 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-[https://shielded-sierra-27094.herokuapp.com/](https://shielded-sierra-27094.herokuapp.com/)
+* [Little Esty Shop Heroku](https://shielded-sierra-27094.herokuapp.com/)
+* [Bulk Discounts Heroku](https://whispering-beach-27624.herokuapp.com/)
 
 <!-- Phases -->
 ## Phases
@@ -49,10 +52,11 @@
 1. [User Stories](./doc/user_stories.md)
 1. [Extensions](./doc/extensions.md)
 1. [Evaluation](./doc/evaluation.md)
+1. [Bulk Discounts](https://backend.turing.edu/module2/projects/bulk_discounts/)
 
 
 <!-- CONTACT -->
-## Contact
+## Little Esty Shop Contacts:
 
 Alex M. - [https://github.com/AlexMR-93](https://github.com/AlexMR-93)
 
@@ -62,7 +66,13 @@ Ashley T. - [https://github.com/ashuhleyt](https://github.com/ashuhleyt)
 
 Joseph H. - Joseph.Hilby@gmail.com
 
-Project Link: [https://github.com/josephhilby/little-esty-shop](https://github.com/josephhilby/little-esty-shop)
+## Bulk Discount Contact:
+
+Amanda R. - [https://github.com/amikaross](https://github.com/amikaross)
+
+## Project Links: 
+
+[https://github.com/amikaross/little-esty-shop](https://github.com/amikaross/little-esty-shop)
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
