@@ -12,6 +12,10 @@ class BulkDiscountsController < ApplicationController
 
   def new
     @merchant = Merchant.find(params[:merchant_id])
+    if params[:holiday]
+      @holiday = params[:holiday]
+      render :holiday_new
+    end
   end
 
   def create
@@ -55,7 +59,7 @@ class BulkDiscountsController < ApplicationController
 
   private
   def app_params
-    params.permit(:merchant_id, :discount, :threshold)
+    params.permit(:merchant_id, :discount, :threshold, :name)
   end
 
   def get_holidays

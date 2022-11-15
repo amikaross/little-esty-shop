@@ -4,7 +4,7 @@
 <h2><%= link_to "Create New Bulk Discount", new_merchant_bulk_discount_path(@merchant) %></h2>
 <% @merchant.bulk_discounts.each do |discount| %>
   <div id="bulk-discount-<%= discount.id %>">
-    <h3><%= link_to "Bulk Discount ##{discount.id}", merchant_bulk_discount_path(@merchant, discount) %></h3>
+    <h3><%= link_to "#{discount.name}", merchant_bulk_discount_path(@merchant, discount) %></h3>
     <p><%= "Quantity Threshold: #{discount.threshold} items" %></p>
     <p><%= "Percentage Discount: #{discount.discount}%" %></p>
     <p><%= button_to "Delete Discount", merchant_bulk_discount_path(@merchant, discount), method: :delete %></p>
@@ -16,6 +16,10 @@
 <br>
 
 <h3>Upcoming Holidays:</h3>
-<% @holidays.each do |holiday| %>
-  <p><%= "#{holiday.name} - #{holiday.date}" %></p> 
+<% @holidays.each_with_index do |holiday, i| %>
+  <div id="holiday-<%= i + 1 %>">
+    <%= "#{holiday.name} - #{holiday.date}   " %>
+    <%= button_to "Create Discount", new_merchant_bulk_discount_path(@merchant), form: {style: 'display:inline-block;'}, method: :get, params: {holiday: holiday.name} %>
+    <br><br>
+  </div> 
 <% end %>

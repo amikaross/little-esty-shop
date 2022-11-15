@@ -3,19 +3,21 @@ require "rails_helper"
 RSpec.describe "Merchant bulk discount edit page" do 
   before(:each) do 
     @merchant = Merchant.create!(name: "Savory Spice")
-    @discount = @merchant.bulk_discounts.create!(discount: 15, threshold: 5)
+    @discount = @merchant.bulk_discounts.create!(discount: 15, threshold: 5, name: "Discount 1")
   end
 
   describe "As a merchant, when I visit a bulk discount show page" do 
     it "has a button to Edit Bulk Discount, when clicked it takes me to an edit page" do 
       visit merchant_bulk_discount_path(@merchant, @discount) 
 
+      expect(page).to have_content("Discount 1")
       expect(page).to have_content("Percentage Discount: 15%")
       expect(page).to have_content("Quantity Threshold: 5 items")
 
       click_button("Edit Bulk Discount")
 
       expect(current_path).to eq(edit_merchant_bulk_discount_path(@merchant, @discount))
+      expect(page).to have_field(:name, with: "Discount 1")
       expect(page).to have_field(:discount, with: "15")
       expect(page).to have_field(:threshold, with: "5")
     end
