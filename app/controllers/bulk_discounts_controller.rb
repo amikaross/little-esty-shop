@@ -1,4 +1,6 @@
 class BulkDiscountsController < ApplicationController 
+  before_action :get_holidays, only: [:index]
+  
   def index 
     @merchant = Merchant.find(params[:merchant_id])
   end
@@ -54,5 +56,9 @@ class BulkDiscountsController < ApplicationController
   private
   def app_params
     params.permit(:merchant_id, :discount, :threshold)
+  end
+
+  def get_holidays
+    @holidays = HolidaySearch.new.holidays
   end
 end

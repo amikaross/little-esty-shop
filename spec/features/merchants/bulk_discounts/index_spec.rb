@@ -6,6 +6,16 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
     @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5)
     @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 10)
     @discount_3 = @merchant.bulk_discounts.create!(discount: 30, threshold: 15)
+
+    @response_body = File.open('./spec/fixtures/response.json')
+    stub_request(:get, "https://date.nager.at/api/v3/NextPublicHolidays/US").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+           }).
+         to_return(status: 200, body: @response_body, headers: {})
   end
 
   describe "As a merchant, when I visit my merchant dashboard" do 
@@ -94,6 +104,15 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
       expect(page).to_not have_content("Quantity Threshold: 15 items")
       expect(page).to_not have_content("Percentage Discount: 30%")
+    end
+
+    it "has a section for Upcoming Holidays which displays the next 3 US Holidays" do 
+      visit merchant_bulk_discounts_path(@merchant)
+
+      expect(page).to have_content("Upcoming Holidays:")
+      expect(page).to have_content("Thanksgiving Day - 2022-11-24")
+      expect(page).to have_content("Christmas Day - 2022-12-26")
+      expect(page).to have_content("New Year's Day - 2023-01-02")
     end
   end
 end
