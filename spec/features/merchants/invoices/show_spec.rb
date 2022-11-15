@@ -22,7 +22,7 @@ RSpec.describe 'On the Merchant Invoices Show Page' do
     @invoice_item_4 = InvoiceItem.create!(invoice: @customer_2_invoice_1, item: @merchant_1_item_1, quantity: 9, status: 2)
 
     @merchant = Merchant.create!(name: "Savory Spice")
-    @discount = @merchant.bulk_discounts.create!(discount: 10, threshold: 5)
+    @discount = @merchant.bulk_discounts.create!(discount: 10, threshold: 5, name: "Discount")
     @cumin = @merchant.items.create!(name: "Cumin", description: "2 oz of ground cumin in a glass jar.", unit_price: 10)
     @thyme = @merchant.items.create!(name: "Thyme", description: "2 oz of dried thyme in a glass jar.", unit_price: 10)
 
@@ -136,11 +136,11 @@ RSpec.describe 'On the Merchant Invoices Show Page' do
           visit merchant_invoice_path(@merchant, @invoice)
 
           within "#item-#{@cumin.id}" do 
-            expect(page).to have_link("#{@discount.id}", href: merchant_bulk_discount_path(@merchant, @discount))
+            expect(page).to have_link("Discount", href: merchant_bulk_discount_path(@merchant, @discount))
           end
 
           within "#item-#{@thyme.id}" do 
-            expect(page).to_not have_content("#{@discount.id}")
+            expect(page).to_not have_content("Discount")
           end
         end
       end

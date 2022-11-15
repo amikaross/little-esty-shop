@@ -4,13 +4,13 @@ require "date"
 RSpec.describe "Admin Invoice show page" do 
   before(:each) do 
     merchant = Merchant.create!(name: "Practical Magic Shop")
-    @discount_1 = merchant.bulk_discounts.create!(discount: 10, threshold: 3)
+    @discount_1 = merchant.bulk_discounts.create!(discount: 10, threshold: 3, name: "Discount 1")
     @book = merchant.items.create!(name: "Book of the dead", description: "book of necromancy spells", unit_price: 4)
     @candle = merchant.items.create!(name: "Candle of life", description: "candle that gifts everlasting life", unit_price: 15)
     @potion = merchant.items.create!(name: "Love potion", description: "One serving size of true love potion", unit_price: 10)
 
     other_merchant = Merchant.create!(name: "Savory Spice")
-    @discount_2 = other_merchant.bulk_discounts.create!(discount: 10, threshold: 5)
+    @discount_2 = other_merchant.bulk_discounts.create!(discount: 10, threshold: 5, name: "Discount 2")
     @cumin = other_merchant.items.create!(name: "Cumin", description: "2 oz of ground cumin in a glass jar.", unit_price: 10)
   
     @customer = Customer.create!(first_name: "Gandalf", last_name: "Thegrey")
