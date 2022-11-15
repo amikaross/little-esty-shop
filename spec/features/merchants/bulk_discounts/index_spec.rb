@@ -6,6 +6,16 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
     @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5)
     @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 10)
     @discount_3 = @merchant.bulk_discounts.create!(discount: 30, threshold: 15)
+
+    @response_body = File.open('./spec/fixtures/response.json')
+    stub_request(:get, "https://date.nager.at/api/v3/NextPublicHolidays/US").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+           }).
+         to_return(status: 200, body: @response_body, headers: {})
   end
 
   describe "As a merchant, when I visit my merchant dashboard" do 
