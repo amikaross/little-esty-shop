@@ -68,6 +68,8 @@ tr:nth-child(even) {
           </th>
           <% if i.bulk_discount %>
             <th><%= link_to "#{i.bulk_discount.id}", merchant_bulk_discount_path(@merchant, i.bulk_discount) %></th>
+          <% else %>
+            <th></th>
           <% end %>
         </tr>
       <% end %>
