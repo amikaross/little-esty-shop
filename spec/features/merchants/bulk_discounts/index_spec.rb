@@ -116,5 +116,24 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       expect(page).to have_content("Christmas Day - 2022-12-26")
       expect(page).to have_content("New Year's Day - 2023-01-02")
     end
+
+    it "next to each holiday is a 'create discount' button next to each of the 3 upcoming holidays, which when clicked takes you to a create form" do 
+      visit merchant_bulk_discounts_path(@merchant)
+
+      within "#holiday-1" do 
+        expect(page).to have_button("Create Discount")
+      end
+
+      within "#holiday-2" do 
+        expect(page).to have_button("Create Discount")
+      end
+
+      within "#holiday-3" do 
+        expect(page).to have_button("Create Discount")
+        click_button("Create Discount")
+      end
+
+      expect(current_path).to eq(new_merchant_bulk_discount_path(@merchant))
+    end
   end
 end
