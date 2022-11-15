@@ -3,9 +3,9 @@ require "rails_helper"
 RSpec.describe "Merchant Bulk Discounts Index page" do 
   before(:each) do 
     @merchant = Merchant.create!(name: "Savory Spice")
-    @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5)
-    @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 10)
-    @discount_3 = @merchant.bulk_discounts.create!(discount: 30, threshold: 15)
+    @discount_1 = @merchant.bulk_discounts.create!(discount: 10, threshold: 5, name: "Discount 1")
+    @discount_2 = @merchant.bulk_discounts.create!(discount: 20, threshold: 10, name: "Discount 2")
+    @discount_3 = @merchant.bulk_discounts.create!(discount: 30, threshold: 15, name: "Discount 3")
 
     @response_body = File.open('./spec/fixtures/response.json')
     stub_request(:get, "https://date.nager.at/api/v3/NextPublicHolidays/US").
@@ -35,19 +35,19 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       visit merchant_bulk_discounts_path(@merchant)
 
       within "#bulk-discount-#{@discount_1.id}" do 
-        expect(page).to have_content("Bulk Discount ##{@discount_1.id}")
+        expect(page).to have_content("Discount 1")
         expect(page).to have_content("Quantity Threshold: 5 items")
         expect(page).to have_content("Percentage Discount: 10%")
       end
 
       within "#bulk-discount-#{@discount_2.id}" do 
-        expect(page).to have_content("Bulk Discount ##{@discount_2.id}")
+        expect(page).to have_content("Discount 2")
         expect(page).to have_content("Quantity Threshold: 10 items")
         expect(page).to have_content("Percentage Discount: 20%")
       end
 
       within "#bulk-discount-#{@discount_3.id}" do 
-        expect(page).to have_content("Bulk Discount ##{@discount_3.id}")
+        expect(page).to have_content("Discount 3")
         expect(page).to have_content("Quantity Threshold: 15 items")
         expect(page).to have_content("Percentage Discount: 30%")
       end
@@ -56,9 +56,9 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
     it "each bulk discount listed includes a link to its show page" do 
       visit merchant_bulk_discounts_path(@merchant)
 
-      expect(page).to have_link("Bulk Discount ##{@discount_1.id}", href: merchant_bulk_discount_path(@merchant, @discount_1))
-      expect(page).to have_link("Bulk Discount ##{@discount_2.id}", href: merchant_bulk_discount_path(@merchant, @discount_2))
-      expect(page).to have_link("Bulk Discount ##{@discount_3.id}", href: merchant_bulk_discount_path(@merchant, @discount_3))
+      expect(page).to have_link("Discount 1", href: merchant_bulk_discount_path(@merchant, @discount_1))
+      expect(page).to have_link("Discount 2", href: merchant_bulk_discount_path(@merchant, @discount_2))
+      expect(page).to have_link("Discount 3", href: merchant_bulk_discount_path(@merchant, @discount_3))
     end
 
     it "has a link to create a new bulk discount, which takes me to a page to create a discount" do 
@@ -85,6 +85,7 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       end
 
       expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
+      expect(page).to_not have_content("Discount 3")
       expect(page).to_not have_content("Quantity Threshold: 15 items")
       expect(page).to_not have_content("Percentage Discount: 30%")
     end
@@ -102,6 +103,7 @@ RSpec.describe "Merchant Bulk Discounts Index page" do
       end
 
       expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
+      expect(page).to_not have_content("Discount 3")
       expect(page).to_not have_content("Quantity Threshold: 15 items")
       expect(page).to_not have_content("Percentage Discount: 30%")
     end
