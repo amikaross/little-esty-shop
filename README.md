@@ -42,8 +42,7 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-* [Little Esty Shop Heroku](https://shielded-sierra-27094.herokuapp.com/)
-* [Bulk Discounts Heroku](https://whispering-beach-27624.herokuapp.com/)
+* [Visit the App](https://whispering-beach-27624.herokuapp.com/)
 
 <!-- Phases -->
 ## Phases
