@@ -21,11 +21,21 @@
 <br />
 <div align="center">
   <a href="https://github.com/amikarosslittle-esty-shop">
-    <img src="doc/little-esty-shop.jpg" alt="Logo" width="400" height="200">
+    <img src="doc/little-esty-shop.jpg" alt="Logo" width="300" height="200">
   </a>
 
 <h1 align="center">Little Esty Shop + Bulk Discounts</h1>
 </div>
+
+## Table of Contents
+
+- [About](#about-the-project)
+- [Getting Started](#getting-started)
+- [Database Schema](#database-schema)
+- [Phases](#phases)
+- [Contacts](#little-esty-shop-contacts)
+- [Links](#project-links)
+- [Acknowledgements](#acknowledgments)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -38,9 +48,6 @@
 
 * Ruby ~ 2.7.4
 * Rails ~ 5.2.8
-
-#### Database Schema:
- <img src="doc/bulk_discounts_schema.png" alt="Schema" width="800" height="600">
   
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -53,6 +60,9 @@
     * Run `rails csv_load:all`.
     * To run the testing suite, run `bundle exec rspec`.
 
+## Database Schema
+ <img src="doc/bulk_discounts_schema.png" alt="Schema" width="800" height="600">
+
 <!-- Phases -->
 ## Phases
 
@@ -64,7 +74,7 @@
 
 
 <!-- CONTACT -->
-## Little Esty Shop Contacts:
+## Little Esty Shop Contacts
 
 Alex M. - [https://github.com/AlexMR-93](https://github.com/AlexMR-93)
 
@@ -74,11 +84,7 @@ Ashley T. - [https://github.com/ashuhleyt](https://github.com/ashuhleyt)
 
 Joseph H. - Joseph.Hilby@gmail.com
 
-## Bulk Discount Contact:
-
-Amanda R. - [https://github.com/amikaross](https://github.com/amikaross)
-
-## Project Links: 
+## Project Links
 
 [https://github.com/amikaross/little-esty-shop](https://github.com/amikaross/little-esty-shop)
 
