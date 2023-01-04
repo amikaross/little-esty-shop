@@ -20,7 +20,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/josephhilby/little-esty-shop">
+  <a href="https://github.com/amikarosslittle-esty-shop">
     <img src="doc/little-esty-shop.jpg" alt="Logo" width="400" height="200">
   </a>
 
@@ -34,15 +34,24 @@
 
 "Bulk Discounts" is a solo extension of the group "Little Esty Shop" project. It adds functionality for merchants to create bulk discounts for their items. A bulk discount is a discount based on the quantity of items the customer is buying. 
 
-### Built With
+#### Built With:
 
 * Ruby ~ 2.7.4
 * Rails ~ 5.2.8
 
+#### Database Schema:
+ <img src="doc/bulk_discounts_schema.png" alt="Schema" width="800" height="600">
+  
 <!-- GETTING STARTED -->
 ## Getting Started
 
-* [Visit the App](https://whispering-beach-27624.herokuapp.com/)
+* [Visit the app](https://whispering-beach-27624.herokuapp.com/) on Heroku
+* Development Setup:
+    * Fork and clone this repository.
+    * CD into the directory and run `bundle install`.
+    * Run `rails db:{drop,create,migrate}`.
+    * Run `rails csv_load:all`.
+    * To run the testing suite, run `bundle exec rspec`.
 
 <!-- Phases -->
 ## Phases
